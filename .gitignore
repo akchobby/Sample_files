@@ -10,4 +10,4 @@
 
 .vscode
 *build
-
+*.bag
