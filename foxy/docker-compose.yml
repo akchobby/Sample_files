@@ -7,17 +7,17 @@ services:
       - datasets:/home/anil-kumarchavali/foxy/datasets 
       - src:/home/anil-kumarchavali/foxy/parsing
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - /tmp/.dockers3f4lvpn.xauth:/tmp/.dockers3f4lvpn.xauth
+      - /run/user/1001/gdm/Xauthority:/root/.Xauthority
       - /etc/localtime:/etc/localtime:ro 
 
     environment:
       - DISPLAY=${DISPLAY}
       - QT_X11_NO_MITSHM=1
-      - XAUTHORITY=/tmp/.dockers3f4lvpn.xauth
+      - COOKIE=$COOKIE
       - TERM=$TERM
     privileged: true
     network_mode: host
-    command: rviz2
+    command: /bin/bash -c "xauth add $COOKIE && rviz2"
     deploy:
       resources:
         reservations:

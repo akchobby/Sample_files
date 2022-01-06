@@ -2,4 +2,8 @@ FROM osrf/ros:foxy-desktop
 RUN apt-get -y update
 RUN apt-get -y install xauth
 
+ENV NVIDIA_VISIBLE_DEVICES \
+    ${NVIDIA_VISIBLE_DEVICES:-all}
+ENV NVIDIA_DRIVER_CAPABILITIES \
+    ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics
 CMD rviz2
