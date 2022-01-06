@@ -7,11 +7,11 @@ services:
       - datasets:/home/anil-kumarchavali/foxy/datasets 
       - src:/home/anil-kumarchavali/foxy/parsing
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - /.Xauthority:/root/.Xauthority
+      - /run/user/1001/gdm/Xauthority:/root/.Xauthority:ro
     environment:
       - DISPLAY=${DISPLAY}
       - COOKIE=${COOKIE}
-    network_mode: host
+    network_mode: "host"
     command: /bin/bash -c "xauth add $COOKIE && firefox"
 
 volumes:

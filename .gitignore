@@ -7,7 +7,7 @@
 # Unignore all dirs
 !*/
 
-
+!Dockerfile
 .vscode
 *build
 *.bag
