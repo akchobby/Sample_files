@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  data-plotter:
+    image: osrf/ros:foxy-desktop
+    volumes:
+      - datasets:/home/anil-kumarchavali/foxy/datasets 
+      - src:/home/anil-kumarchavali/foxy/parsing
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /.Xauthority:/root/.Xauthority
+    environment:
+      - DISPLAY=${DISPLAY}
+    privileged: true 
+    network_mode: host
+    command: rviz2
+
+volumes:
+  datasets:
+  src:
