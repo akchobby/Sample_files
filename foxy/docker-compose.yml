@@ -2,17 +2,27 @@ version: '3.3'
 
 services:
   data-plotter:
-    image: osrf/ros:foxy-desktop
+    image: foxy-trial
     volumes:
       - datasets:/home/anil-kumarchavali/foxy/datasets 
       - src:/home/anil-kumarchavali/foxy/parsing
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - /.Xauthority:/root/.Xauthority
+      - /tmp/.dockers3f4lvpn.xauth:/tmp/.dockers3f4lvpn.xauth
+      - /etc/localtime:/etc/localtime:ro 
+
     environment:
       - DISPLAY=${DISPLAY}
-    privileged: true 
+      - QT_X11_NO_MITSHM=1
+      - XAUTHORITY=/tmp/.dockers3f4lvpn.xauth
+      - TERM=$TERM
+    privileged: true
     network_mode: host
     command: rviz2
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
 
 volumes:
   datasets:
