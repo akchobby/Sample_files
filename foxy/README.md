@@ -4,6 +4,7 @@ Sucessfully able to run firefox gui using compose
 
 # Extra to dos
 
+* COOKIE authentication not need ?
 * COOKIE generate using:
 
 ```bash

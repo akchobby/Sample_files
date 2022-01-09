@@ -17,7 +17,7 @@ services:
       - TERM=$TERM
     privileged: true
     network_mode: host
-    command: /bin/bash -c "xauth add $COOKIE && rviz2"
+    command: /bin/bash -c "rviz2"
     deploy:
       resources:
         reservations:

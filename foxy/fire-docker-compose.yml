@@ -12,7 +12,7 @@ services:
       - DISPLAY=${DISPLAY}
       - COOKIE=${COOKIE}
     network_mode: "host"
-    command: /bin/bash -c "xauth add $COOKIE && firefox"
+    command: /bin/bash -c "firefox"
 
 volumes:
   datasets:
