@@ -3,7 +3,7 @@
 """ rectifier.py: Rectifies fish camera images from rosbags 
                   and generates a new bag from it """
                   
-__author__ = "Anil Kumar Chavali"
+__author__ = "Anil Kumar Chavali trial commit"
 
 import cv2
 import re
