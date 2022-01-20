@@ -23,6 +23,10 @@ grep -A/-B <number> <pattern>
 ## Returns lines containing pattern in the search path
 grep -rnw <path to search> -e <pattern>
 
+grep <pattern> -rnw <path to search>
 
 --------------------------------------------
+# recover deleted git files during reset 
+
+git fsck --lost-found | grep "dangling blob" | awk -F " " '{print $3}'| xargs git show > recovers.log
 
