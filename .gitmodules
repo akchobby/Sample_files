@@ -1,3 +1,6 @@
 [submodule "lidar_camera/Transforms"]
 	path = lidar_camera/Transforms
 	url = https://github.com/akchobby/Transforms.git
+[submodule "cmake/cmake_guide"]
+	path = cmake/cmake_guide
+	url = git@github.com:akchobby/cmake_guide.git
