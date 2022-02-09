@@ -6,6 +6,7 @@ df -lh
 
 ## check size of directories in path 
 du -cha --max-depth=1 <path>
+du -hs *
 
 ## general command to continuously monitor
 watch -n <secs> <command>
@@ -17,7 +18,7 @@ dmesg | grep <harware device driver type>
 -------------------------------------------
 # Search
 
-## Get lines after or before pattren
+## Get lines after or before pattern
 grep -A/-B <number> <pattern>
 
 ## Returns lines containing pattern in the search path
@@ -29,4 +30,16 @@ grep <pattern> -rnw <path to search>
 # recover deleted git files during reset 
 
 git fsck --lost-found | grep "dangling blob" | awk -F " " '{print $3}'| xargs git show > recovers.log
+
+
+--------------------------------------------
+
+# Quickly parse out info from lines
+
+cat <file name> | grep <pattern> | awk -F '<seperator>' '{print $<index>}' > output.txt 
+
+--------------------------------------------
+# searching for consecutively repeating patterns 
+
+cat <file name> | uniq --count | grep -v '^ *1 ' 
 
