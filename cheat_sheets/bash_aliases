@@ -1,0 +1,48 @@
+alias load_mir_master='export ROS_MASTER_URI=http://192.168.68.133:11311;export ROS_IP=192.168.68.175'
+alias load_ros='source /opt/ros/noetic/setup.bash'
+alias load_ros2='source /opt/ros/foxy/setup.bash'
+alias load_pyenv='source ~/myenv/bin/activate'
+convert_kazam(){
+
+ffmpeg -i $1.mp4 -pix_fmt yuv420p -c:a copy -movflags +faststart $1_conv.mp4
+
+}
+
+cut_video(){
+	export On_Green='\033[42m'
+	export NC='\033[0m'
+	printf "${On_green}takes 1.in file, 2.start time in hh:mm:ss, 3.end time${NC}\n\n"
+	printf "$1 $2 $3"
+	printf " ######################################################################\n"
+	ffmpeg -i $1 -ss $2 -to $3 -c:v copy -c:a copy out.mp4
+}
+
+
+copy_remote(){
+
+	# $1- source $2- dest $3- exclusion
+	rsync -av --exclude=$3 $1 $2
+
+}
+
+
+alias fpv="mpv av://v4l2:/dev/video2 --profile=low-latency --untimed"
+
+
+stop_all_docker(){
+
+	docker stop $(docker ps -a | awk '{print $1}')
+	docker rm  $(docker ps -a | awk '{print $1}')
+}
+
+
+
+get_docker_children(){
+
+	for i in $(docker images -q)
+        do
+          docker history $i | grep -q $1 && echo $i
+        done | sort -u
+
+
+}
