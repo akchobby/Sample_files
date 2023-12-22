@@ -24,9 +24,9 @@ ls -FAlh $XAUTH
 echo ""
 echo "Running docker..."
 
-docker run -it --rm --name gui_test --gpus all --user root --net=host \
-                                                            -e DISPLAY=$DISPLAY \
-                                                            --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-                                                            --env="XAUTHORITY=$XAUTH" \
-                                                            --volume="$XAUTH:$XAUTH" \
-                                                             osrf/ros:noetic-desktop-full 
+docker run -it --rm --name gui_test --net=host \
+                                    -e DISPLAY=$DISPLAY \
+                                    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+                                    -e XAUTHORITY=$XAUTH \
+                                    -v $XAUTH:$XAUTH \
+                                    osrf/ros:noetic-desktop-full 
