@@ -1,0 +1,13 @@
+
+{
+    "name": "Dev Container",
+    "build": {
+        "dockerfile": "../Docker/Dockerfile",
+        "context": ".."
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/root/workspace,type=bind",
+    "workspaceFolder": "/root/workspace",
+    "settings": {},
+    "extensions": [],
+    "postCreateCommand": ""
+}
